@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2026马年 · 同贺新春</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --red-deep: #8B0000;
+            --red: #C41E3A;
+            --red-light: #DC143C;
+            --gold: #FFD700;
+            --gold-light: #FFA500;
+            --paper: #FFF8DC;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, var(--red-deep) 0%, var(--red) 50%, var(--red-light) 100%);
+            min-height: 100vh;
+            color: var(--paper);
+            overflow-x: hidden;
+        }
+        .lanterns {
+            position: fixed;
+            top: 20px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            pointer-events: none;
+            z-index: 5;
+        }
+        .lantern {
+            font-size: 2.5rem;
+            animation: swing 2s ease-in-out infinite;
+        }
+        .lantern:nth-child(2) { animation-delay: 1s; }
+        @keyframes swing {
+            0%, 100% { transform: rotate(-8deg); }
+            50% { transform: rotate(8deg); }
+        }
+        .coins {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .coin {
+            position: absolute;
+            font-size: 1.2rem;
+            animation: fall 4s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-50px) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+        .container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px 40px;
+        }
+        .year-section {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .year-label {
+            font-size: 0.8rem;
+            letter-spacing: 10px;
+            color: var(--gold);
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+        .year-number {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 700;
+            letter-spacing: 15px;
+            color: var(--gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            margin-left: 15px;
+        }
+        .card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 35px 25px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+        }
+        .horse {
+            font-size: clamp(5rem, 16vw, 7rem);
+            font-weight: 900;
+            color: var(--gold);
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .divider-line {
+            width: 50px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        .divider-icon {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+        .greeting h2 {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-weight: 600;
+            letter-spacing: 4px;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+        .greeting .name {
+            color: var(--gold);
+        }
+        .greeting p {
+            font-size: 0.95rem;
+            letter-spacing: 3px;
+            color: rgba(255, 248, 220, 0.9);
+        }
+        .blessings {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 25px;
+        }
+        .blessing {
+            background: rgba(255, 215, 0, 0.15);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 10px;
+            padding: 18px 12px;
+        }
+        .blessing h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 4px;
+        }
+        .blessing p {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: rgba(255, 248, 220, 0.8);
+        }
+        .footer {
+            margin-top: 35px;
+            text-align: center;
+        }
+        .fu {
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 2rem;
+            color: var(--red-deep);
+            font-weight: 900;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+        }
+        .footer p {
+            font-size: 0.85rem;
+            letter-spacing: 5px;
+            color: var(--gold);
+        }
+        @media (max-width: 380px) {
+            .blessings { grid-template-columns: 1fr; }
+            .lantern { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="lanterns">
+        <span class="lantern">🏮</span>
+        <span class="lantern">🏮</span>
+        <span class="lantern">🏮</span>
+    </div>
+    <div class="coins" id="coins"></div>
+    <div class="container">
+        <div class="year-section">
+            <p class="year-label">✦ 新春快乐 ✦</p>
+            <h1 class="year-number">2026</h1>
+        </div>
+        <div class="card">
+            <div class="horse">馬</div>
+            <div class="divider">
+                <div class="divider-line"></div>
+                <span class="divider-icon">✦</span>
+                <div class="divider-line"></div>
+            </div>
+            <div class="greeting">
+                <h2><span class="name">年克宇</span> 恭贺新禧</h2>
+                <p>新年快乐 · 前程似锦</p>
+            </div>
+            <div class="blessings">
+                <div class="blessing">
+                    <h3>🎯 学业精进</h3>
+                    <p>前程似锦</p>
+                </div>
+                <div class="blessing">
+                    <h3>💼 事业顺遂</h3>
+                    <p>鹏程万里</p>
+                </div>
+                <div class="blessing">
+                    <h3>💪 身体健康</h3>
+                    <p>龙马精神</p>
+                </div>
+                <div class="blessing">
+                    <h3>🏠 生活美满</h3>
+                    <p>万事顺意</p>
+                </div>
+                <div class="blessing">
+                    <h3>💰 财源广进</h3>
+                    <p>富贵吉祥</p>
+                </div>
+                <div class="blessing">
+                    <h3>🎯 心想事成</h3>
+                    <p>诸事顺遂</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="fu">吉</div>
+            <p>✦ 马到成功 · 未来可期 ✦</p>
+        </div>
+    </div>
+    <script>
+        function createCoin() {
+            const coins = ['🧧', '💰', '✨', '🎊', '🏮'];
+            const coin = document.createElement('div');
+            coin.className = 'coin';
+            coin.textContent = coins[Math.floor(Math.random() * coins.length)];
+            coin.style.left = Math.random() * 100 + '%';
+            coin.style.animationDelay = Math.random() * 2 + 's';
+            coin.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            document.getElementById('coins').appendChild(coin);
+            setTimeout(() => coin.remove(), 6000);
+        }
+        setInterval(createCoin, 800);
+    </script>
+</body>
+</html>
